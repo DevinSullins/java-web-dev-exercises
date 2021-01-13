@@ -1,4 +1,5 @@
 package exercises;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class AliceSearch {
@@ -11,8 +12,7 @@ public class AliceSearch {
                 "conversation?'";
         System.out.println("Your word: ");
         String userWord = input.nextLine();
-        Boolean wordMatch = aliceParagraph.contains(userWord);
+        Boolean wordMatch = aliceParagraph.toLowerCase().contains(userWord.toLowerCase());
         System.out.println(wordMatch);
-
     }
 }
