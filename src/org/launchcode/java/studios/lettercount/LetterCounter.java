@@ -1,4 +1,6 @@
 package org.launchcode.java.studios.lettercount;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -10,9 +12,24 @@ public class LetterCounter {
     public static void main(String[] args) {
        /* String oldString = "If the product of two terms is zero then common sense says at least one of the two terms has to be zero to start with. So if you move all the terms over to one side, you can put the quadratics into a form that can be factored allowing that side of the equation to equal zero. Once you’ve done that, it’s pretty straightforward from there.";
         */
-        System.out.println("Enter a phrase: ");
+    /*    System.out.println("Enter a phrase: ");
         Scanner input = new Scanner(System.in);
-        String myString = input.nextLine();
+        String myString = input.nextLine();*/
+        String myString = "";
+        try {
+            File myObj = new File("./src/org/launchcode/java/studios/lettercount/stringfile");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                myString += data;
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+
         char[] charactersInString = myString.toLowerCase().replaceAll("\\W", "").toCharArray();
         HashMap<Character, Integer> characterMap = new HashMap<>();
 
